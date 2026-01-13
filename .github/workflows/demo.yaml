@@ -11,13 +11,12 @@ jobs:
       output2: ${{ steps.output2.outputs.test2 }}
 
     steps:
-      - name: print output
-        id: output1
-        run: echo "test=hello" >> $GITHUB_OUTPUT
-
-      - name: print output2
-        id: output2
-        run: echo "test2=world" >> $GITHUB_OUTPUT
+        - name: print output
+          id: output1
+          run: echo "test=hello" >> $GITHUB_OUTPUT
+        - name: print output2
+          id: output2
+          run: echo "test2=world" >> $GITHUB_OUTPUT
 
  
 

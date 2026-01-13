@@ -14,5 +14,5 @@ jobs:
             - name: print output2
               id: output2
               run: echo "test2=world" >> $GITHUB_OUTPUT
-
+ 
 

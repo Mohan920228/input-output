@@ -1,18 +1,23 @@
 name: input-output
+
 on:
-    workflow_dispatch
+  workflow_dispatch:
+
 jobs:
-    job1:
-        runs-on: ubuntu-latest
-        outputs:
-            output1: ${{ steps.output1.outputs.test }}
-            output2: ${{ steps.output2.outputs.test2 }}
-        steps:
-            - name: print output
-              id: output1
-              run: echo "test=hello" >> $GITHUB_OUTPUT
-            - name: print output2
-              id: output2
-              run: echo "test2=world" >> $GITHUB_OUTPUT
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.output1.outputs.test }}
+      output2: ${{ steps.output2.outputs.test2 }}
+
+    steps:
+      - name: print output
+        id: output1
+        run: echo "test=hello" >> $GITHUB_OUTPUT
+
+      - name: print output2
+        id: output2
+        run: echo "test2=world" >> $GITHUB_OUTPUT
+
  
 

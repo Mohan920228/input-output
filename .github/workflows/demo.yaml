@@ -1,8 +1,17 @@
 name: input-output
 
 on:
-  workflow_dispatch: 
-
+  workflow_dispatch:
+    inputs:
+        environment:
+            description: "Select environment"
+            required: true
+            default: dev
+            type: choice
+            options:
+              - dev
+              - stage
+              - prod
 jobs:
   job1:
     runs-on: ubuntu-latest

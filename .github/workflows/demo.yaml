@@ -24,12 +24,10 @@ jobs:
         id: set
         run: echo "test1=hello" >> $GITHUB_OUTPUT
 
-      - name: use step output
-        run: echo "Step output is: ${{ steps.set.outputs.test1 }}"
-
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: use job output
-        run: echo "Job output is: ${{ needs.job1.outputs.output1 }}"
+        run: | 
+            echo "Job output is: ${{ needs.job1.outputs.output1 }}"

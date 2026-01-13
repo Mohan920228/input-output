@@ -17,11 +17,19 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.print1.outputs.test1 }}
+      output1: ${{ steps.set.outputs.test1 }}
 
     steps:
-      - name: print output1
-        id: print1
-        run: |
-          echo "test1=hello" >> $GITHUB_OUTPUT
-          echo "the output value is: ${{ steps.print1.outputs.test1 }}"
+      - name: set output
+        id: set
+        run: echo "test1=hello" >> $GITHUB_OUTPUT
+
+      - name: use step output
+        run: echo "Step output is: ${{ steps.set.outputs.test1 }}"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: use job output
+        run: echo "Job output is: ${{ needs.job1.outputs.output1 }}"

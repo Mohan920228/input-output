@@ -10,10 +10,5 @@ jobs:
       - name: set output
         id: set
         run: echo "set=hello" >> $GITHUB_OUTPUT
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: use job1 output
-        run: |
-          echo "Job output is: ${{ steps.set.outputs.set }}"
+      - name: print output
+        run: echo "Job output is ${{ steps.set.outputs.set}}"

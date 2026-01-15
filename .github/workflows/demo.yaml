@@ -15,7 +15,7 @@ on:
           - prod
 jobs:
   job1:
-    if: environamet != dev
+    if: environment != dev
     runs-on: ubuntu-latest
 
     steps:

@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: use job1 output
         run: |
-          echo "Job output is: ${{ needs.job1.outputs.set }}"
+          echo "Job output is: ${{ steps.set.outputs.set }}"

@@ -15,19 +15,19 @@ on:
 
 jobs:
   job1:
+    if:
+        environamet != dev
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.set.outputs.test1 }}
 
     steps:
       - name: set output
         id: set
-        run: echo "test1=hello" >> $GITHUB_OUTPUT
+        run: echo "set=hello" >> $GITHUB_OUTPUT
 
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: use job output
+      - name: use job1 output
         run: | 
-            echo "Job output is: ${{ needs.job1.outputs.output1 }}"
+            echo "Job output is: ${{ needs.job1.outputs.set }}"

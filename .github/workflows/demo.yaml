@@ -5,10 +5,18 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-
+    outputs:
+      job1-output: ${{ steps.set.outputs.set}}"
     steps:
       - name: set output
         id: set
         run: echo "set=hello" >> $GITHUB_OUTPUT
       - name: print output
         run: echo "Job output is ${{ steps.set.outputs.set}}"
+  job2: 
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: print from job1
+        run : |
+          echo "The output from job1 is ${{ needs.job1.outputs.job1-output }}"

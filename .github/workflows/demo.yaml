@@ -6,7 +6,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      job1-output: ${{ steps.set.outputs.set}}"
+      job1-output: ${{ steps.set.outputs.set}}
     steps:
       - name: set output
         id: set

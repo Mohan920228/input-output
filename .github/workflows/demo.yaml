@@ -1,7 +1,8 @@
 name: input-output
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
+    
     inputs:
       environment:
         description: "Select environment"
@@ -12,22 +13,19 @@ on:
           - dev
           - stage
           - prod
-
 jobs:
   job1:
-    if:
-        environamet != dev
+    if: environamet != dev
     runs-on: ubuntu-latest
 
     steps:
       - name: set output
         id: set
         run: echo "set=hello" >> $GITHUB_OUTPUT
-
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: use job1 output
-        run: | 
-            echo "Job output is: ${{ needs.job1.outputs.set }}"
+        run: |
+          echo "Job output is: ${{ needs.job1.outputs.set }}"

@@ -9,7 +9,7 @@ jobs:
       - name: job1-step
         id: job1-step1
         run: |
-          echo test=this is my first job output >> $GITHUB_OUTPUT
+          echo "test=this is my first job output" >> $GITHUB_OUTPUT
       - name: job1-step2
         run: |
-          echo "job1-step2 output is ${{ steps.job1-step1.output.test }}"
+          echo "job1-step2 output is ${{ steps.job1-step1.outputs.test }}"

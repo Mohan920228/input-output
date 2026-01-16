@@ -1,22 +1,15 @@
-name: input-output
-on: 
-  workflow_dispatch: 
-    
+name: output-github
+on:
+  workflow_dispatch:
+
 jobs:
   job1:
     runs-on: ubuntu-latest
-    outputs:
-      job1-output: ${{ steps.set.outputs.set}}
     steps:
-      - name: set output
-        id: set
-        run: echo "set=hello" >> $GITHUB_OUTPUT
-      - name: print output
-        run: echo "Job output is ${{ steps.set.outputs.set}}"
-  job2: 
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - name: print from job1
-        run : |
-          echo "The output from job1 is ${{ needs.job1.outputs.job1-output }}"
+      - name: job1-step
+        id: job1-step1
+        run: |
+          echo test=this is my first job output >> "GITHUB_OUTPUT"
+      - name: job1-step2
+        run: |
+          echo "job1-step2 output is ${{ steps.job1-step1.output.test }}"

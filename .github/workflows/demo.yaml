@@ -3,7 +3,10 @@ on:
   push:
 
 jobs:
+  
   job1:
+    outputs:
+      job1out: ${{ steps.job1-step1.outputs.test }}
     runs-on: ubuntu-latest
     steps:
       - name: job1-step
@@ -13,3 +16,10 @@ jobs:
       - name: job1-step2
         run: |
           echo "job1-step2 output is ${{ steps.job1-step1.outputs.test }}"
+  output-job:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: output-job-output
+        run : |
+         echo "The output-job-output is ${{ needs.job1.outputs.job1out }}"
